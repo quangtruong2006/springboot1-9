@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+    <div th:fragment="header" class="header">
+        <h2 style="margin: 0;">UTEShop</h2>
+        
+        <!-- Khung này chỉ hiện khi ĐÃ ĐĂNG NHẬP -->
+        <div class="user-info" sec:authorize="isAuthenticated()">
+            <img th:src="@{${#authentication.principal.images}}" alt="Avatar" class="avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
+            <div style="line-height: 1.4;">
+                <b th:text="${#authentication.principal.fullName}">Tên User</b> 
+                <small th:text="'(' + ${#authentication.principal.username} + ')'"></small><br>
+                <small th:text="${#authentication.principal.email}"></small> - 
+                <small style="color: #fde047; font-weight: bold;" th:text="${#authentication.principal.role}"></small>
+            </div>
+            <form th:action="@{s/logout}" method="post" style="margin: 0; margin-left: 20px;">
+                <button type="submit" class="btn-logout">Đăng xuất</button>
+            </form>
+        </div>
+
+        <!-- Khung này chỉ hiện khi CHƯA ĐĂNG NHẬP -->
+        <div sec:authorize="isAnonymous()">
+            <a href="/login" class="btn-login">Đăng nhập</a>
+        </div>
+    </div>
+</body>
+</html>

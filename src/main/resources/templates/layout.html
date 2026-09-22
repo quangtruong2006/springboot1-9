@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>UTEShop</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f6f9; color: #333; }
+        .header { background-color: #2563eb; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .user-info { display: flex; align-items: center; gap: 15px; }
+        .avatar { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; background: #fff; }
+        .btn-login { color: #2563eb; background: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-weight: bold; }
+        .btn-logout { background: #dc2626; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .container { padding: 30px; max-width: 1200px; margin: 0 auto; min-height: 80vh; }
+        .footer { text-align: center; padding: 15px; background: #cbd5e1; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <!-- Chèn Header -->
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <!-- Nội dung thay đổi từng trang sẽ nằm ở đây -->
+    <div class="container" layout:fragment="content">
+    </div>
+
+    <div class="footer">
+        Copyright © UTEShop 2026
+    </div>
+</body>
+</html>
